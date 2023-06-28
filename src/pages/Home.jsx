@@ -21,7 +21,10 @@ const Home = () => {
             
         }
 
-        axios.all(endpoints.map((endpoint) => axios.get(endpoint))).then((res) => setShowPokemons(res));
+        var response = axios.all(endpoints.map((endpoint) => axios.get(endpoint))).then((res) => setShowPokemons(res));
+                return{
+            response
+        }
 
 
         // axios
