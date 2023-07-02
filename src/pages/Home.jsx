@@ -42,8 +42,11 @@ const Home = () => {
 
     const filterPokemon = (name) => {
         var newFilterPokemon = [];
+        if(name === ""){
+            getPokemons()
+        }
         for (var i in showPokemons) {
-            if (showPokemons[i].name.include(name)) {
+            if (showPokemons[i].data.name.includes(name)) {
                 newFilterPokemon.push({ ...showPokemons[i] });
             }
         }
@@ -53,7 +56,7 @@ const Home = () => {
         console.log(newFilterPokemon);
         console.log('====================================');
 
-        //setShowPokemons(newFilterPokemon);
+        setShowPokemons(newFilterPokemon);
     }
     
 
@@ -68,7 +71,11 @@ const Home = () => {
 
                         return (
                             <Grid item xs={2} key={index}>
-                                <CardPokemon name={pokemon.data.name} image={pokemon.data.sprites.front_default} />
+                                <CardPokemon 
+                                name={pokemon.data.name} 
+                                image={pokemon.data.sprites.front_default} 
+                                types={pokemon.data.types}
+                                />
                                 {/* AQUI RECEBE O NAME POR PROS */}
                             </Grid>
 
