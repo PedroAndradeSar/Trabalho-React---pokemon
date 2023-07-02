@@ -74,6 +74,7 @@ const Home = () => {
                             return (
                                 <Grid item xs={12} sm={6} md={4} lg={2} key={index}>
                                     <CardPokemon
+                                        sx={{ backgroundColor: "blue" }}
                                         name={pokemon.data.name}
                                         image={pokemon.data.sprites.front_default}
                                         types={pokemon.data.types}

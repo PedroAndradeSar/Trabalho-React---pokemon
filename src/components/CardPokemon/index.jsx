@@ -21,7 +21,7 @@ export default function CardPokemon({ name, image, types}) { //passando por prop
                     component="img"
                     height="250"
                     image={image}
-                    alt="green iguana"
+                    alt={name}
                 />
                 <CardContent>
                     <Box 
