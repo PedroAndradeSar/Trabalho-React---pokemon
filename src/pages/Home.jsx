@@ -3,6 +3,7 @@ import Navbar from "../components/NavBar";
 import CardPokemon from "../components/CardPokemon";
 import { Container, Grid } from "@mui/material";
 import axios from "axios";
+import Loading from "../components/Loading/Loading";
 
 
 
@@ -42,7 +43,7 @@ const Home = () => {
 
     const filterPokemon = (name) => {
         var newFilterPokemon = [];
-        if(name === ""){
+        if (name === "") {
             getPokemons()
         }
         for (var i in showPokemons) {
@@ -58,30 +59,35 @@ const Home = () => {
 
         setShowPokemons(newFilterPokemon);
     }
-    
+
 
     return (
         <div>
-            <Navbar filterPokemon={filterPokemon}/>
+            <Navbar filterPokemon={filterPokemon} />
             <Container
                 maxWidth="false"
             >
                 <Grid container spacing={2}>
-                    {showPokemons.map((pokemon, index) => {
+                    {showPokemons.length === 0 ? (<Loading />) : (
+                         showPokemons.map((pokemon, index) => {
 
-                        return (
-                            <Grid item xs={12} sm={6} md={4} lg={2} key={index}>
-                                <CardPokemon 
-                                name={pokemon.data.name} 
-                                image={pokemon.data.sprites.front_default} 
-                                types={pokemon.data.types}
-                                />
-                                {/* AQUI RECEBE O NAME POR PROS */}
-                            </Grid>
+                            return (
+                                <Grid item xs={12} sm={6} md={4} lg={2} key={index}>
+                                    <CardPokemon
+                                        name={pokemon.data.name}
+                                        image={pokemon.data.sprites.front_default}
+                                        types={pokemon.data.types}
+                                    />
+                                    {/* AQUI RECEBE O NAME POR PROS */}
+                                </Grid>
 
-                        )
+                            )
 
-                    })}
+                        })
+                    )
+
+                       
+                    }
 
 
 
