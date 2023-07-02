@@ -70,7 +70,7 @@ const Home = () => {
                     {showPokemons.map((pokemon, index) => {
 
                         return (
-                            <Grid item xs={2} key={index}>
+                            <Grid item xs={12} sm={6} md={4} lg={2} key={index}>
                                 <CardPokemon 
                                 name={pokemon.data.name} 
                                 image={pokemon.data.sprites.front_default} 
