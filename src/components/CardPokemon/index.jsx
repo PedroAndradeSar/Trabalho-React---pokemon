@@ -4,15 +4,11 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Box, Button, CardActionArea, CardActions } from '@mui/material';
+import { showTypes } from '../TiposPokemons';
 
 export default function CardPokemon({ name, image, types }) {
 
-  const showTypes = () => {
-    if (types[1]) {
-      return types[0].type.name + " | " + types[1].type.name;
-    }
-    return types[0].type.name;
-  };
+
 
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -37,7 +33,7 @@ export default function CardPokemon({ name, image, types }) {
               variant="caption"
               component="div"
             >
-              {showTypes()}
+              {showTypes(types)}
             </Typography>
 
           </Box>
