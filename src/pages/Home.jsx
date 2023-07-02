@@ -40,12 +40,26 @@ const Home = () => {
 
     }, []);
 
+    const filterPokemon = (name) => {
+        var newFilterPokemon = [];
+        for (var i in showPokemons) {
+            if (showPokemons[i].name.include(name)) {
+                newFilterPokemon.push({ ...showPokemons[i] });
+            }
+        }
 
+        //apagar o consolelog
+        console.log('====================================');
+        console.log(newFilterPokemon);
+        console.log('====================================');
 
+        //setShowPokemons(newFilterPokemon);
+    }
+    
 
     return (
         <div>
-            <Navbar />
+            <Navbar filterPokemon={filterPokemon}/>
             <Container
                 maxWidth="false"
             >
