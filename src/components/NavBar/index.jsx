@@ -6,6 +6,7 @@ import Toolbar from '@mui/material/Toolbar';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 
+
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
@@ -48,7 +49,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function Navbar({ filterPokemon }) {
+export default function Navbar({ filterPokemon, searchHide }) {
+
   return (
     <Box sx={{ flexGrow: 1, marginBottom: "1em" }}>
       <AppBar position="static" sx={{ backgroundColor: "black" }}>
@@ -60,22 +62,21 @@ export default function Navbar({ filterPokemon }) {
               component="img"
               src="/img/pokemon/pokemon-logo.png"
               height="3em"
+              x={{ cursor: "pointer" }}
             />
-            <Search onChange={(event) => filterPokemon(event.target.value)}>
-              <SearchIconWrapper >
-                <SearchIcon />
-              </SearchIconWrapper>
-              <StyledInputBase
-                // sx={{displa:"flex", height:"2em"}}
-                placeholder="Pesquise na POKEDEX"
-                inputProps={{ 'aria-label': 'search' }}
-              />
-            </Search>
-
+            {!searchHide && (
+              <Search onChange={(event) => filterPokemon(event.target.value)}>
+                <SearchIconWrapper >
+                  <SearchIcon />
+                </SearchIconWrapper>
+                <StyledInputBase
+                  // sx={{displa:"flex", height:"2em"}}
+                  placeholder="Pesquise na POKEDEX"
+                  inputProps={{ 'aria-label': 'search' }}
+                />
+              </Search>
+            )}
           </Box>
-
-
-
         </Toolbar>
       </AppBar>
     </Box >

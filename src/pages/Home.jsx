@@ -9,13 +9,9 @@ import Loading from "../components/Loading/Loading";
 
 const Home = () => {
 
-    //mostrar pokemonss
     const [showPokemons, setShowPokemons] = useState([])
 
-
-    //rotas
     const getPokemons = () => {
-        //é para fazer um push no array, e reenderizar quando estiver tudo carregado
         var endpoints = []
         for (var i = 1; i < 150; i++) {
             endpoints.push(`https://pokeapi.co/api/v2/pokemon/${i}/`);
@@ -23,21 +19,11 @@ const Home = () => {
         }
         axios.all(endpoints.map((endpoint) => axios.get(endpoint))).then((res) => setShowPokemons(res));
 
-
-        // axios
-        //     .get("https://pokeapi.co/api/v2/pokemon?limit=150")
-        //     .then((res) => setShowPokemons(res.data.results))
-        //     .catch((error) => console.log(error));
-
     }
-    //reinderizar rotas
+
     useEffect(() => {
         getPokemons();
 
-        //Apagar
-        console.log('====================================');
-        console.log(showPokemons);
-        console.log('====================================');
 
     }, []);
 
@@ -52,18 +38,13 @@ const Home = () => {
             }
         }
 
-        //apagar o consolelog
-        console.log('====================================');
-        console.log(newFilterPokemon);
-        console.log('====================================');
-
         setShowPokemons(newFilterPokemon);
     }
 
 
     return (
         <div>
-            <Navbar filterPokemon={filterPokemon} />
+            <Navbar filterPokemon={filterPokemon}  />
             <Container
                 maxWidth="false"
             >

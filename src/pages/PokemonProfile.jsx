@@ -1,8 +1,13 @@
 import React from "react";
+import Navbar from "../components/NavBar";
 
 const PokemonProfile = () => {
     return (
-        <div>teste</div>
+        <div>
+            <Navbar searchHide/>
+            teste
+
+        </div>
     );
 }
 
